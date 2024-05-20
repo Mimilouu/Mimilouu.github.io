@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+
+
+.dice {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transition: transform 1s; 
+}
+
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: -10px 5px 5px -10px;
+  border-radius: 20px;
+  background-color: #f25f5c;
+  box-shadow: inset 2px 2px #d90429;
+}
+
+.dice-one {
+  position: absolute;
+  top: 20%;
+  right:0;
+  left:0;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 7;
+}
+
+.side {
+  position: absolute;
+  background-color: #ffF;
+  border-radius:5px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  line-height: 2em;
+}
+
+.side:nth-child(1) {
+  transform: translateZ(3.1em); }
+
+.side:nth-child(6) {
+  transform: rotateY(90deg) translateZ(3.1em); }
+
+.side:nth-child(3) {
+  transform: rotateY(-90deg) translateZ(3.1em); }
+
+.side:nth-child(4) {
+  transform: rotateX(90deg) translateZ(3.1em); }
+
+.side:nth-child(5) {
+  transform: rotateX(-90deg) translateZ(3.1em); }
+
+.side:nth-child(2) {
+  transform: rotateY(-180deg) translateZ(3.1em); }
+
+.show-1 {
+  transform: rotateX(720deg) rotateZ(-720deg); }
+
+.show-6 {
+  transform: rotateX(-900deg) rotateZ(1080deg); }
+
+.show-3 {
+  transform: rotateY(-450deg) rotateZ(-1440deg); }
+
+.show-4 {
+  transform: rotateY(810deg) rotateZ(720deg); }
+
+.show-5 {
+  transform: rotateX(-810deg) rotateZ(-1080deg); }
+
+.show-2 {
+  transform: rotateX(450deg) rotateZ(-720deg); }
+
+.two-1, .three-1, .four-1, .five-1, .six-1 {
+  top: 20%;
+  left: 20%; 
+}
+
+.four-3, .five-3, .six-4 {
+  top: 20%;
+  left: 80%; }
+
+.one-1, .three-2, .five-5 {
+  top: 50%;
+  left: 50%; }
+
+.four-2, .five-2, .six-3 {
+  top: 80%;
+  left: 20%; }
+
+.two-2, .three-3, .four-4, .five-4, .six-6 {
+  top: 80%;
+  left: 80%; }
+
+.six-2 {
+  top: 50%;
+  left: 20%; }
+
+.six-5 {
+  top: 50%;
+  left: 80%; 
+}
+
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 30vh;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  perspective: 1000px;
+}
+
+.flip-card div {
+    color: #323232  ;
+}
+
+.choix{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 50vh;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  perspective: 1000px;
+}
+
+.title{
+  font-size: 3.5rem;
+}
+
+.test2 h1 {
+    color: #fff;
+    display: inline;
+    padding: 1%;
+    font-size: 1,5em;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (min-width: 1001px) {
+    .flip-card-container{
+    height: 16rem;
+    width: 12rem;
+    cursor: pointer;
+    }
+
+    .flip-card{
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d; 
+    }
+
+    .flip-card div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.7rem;
+    box-shadow: 1rem 2rem 3rem;
+    backface-visibility: hidden;
+    font-weight: bold;
+    font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 1000px) and (min-width: 500px){
+    .flip-card-container{
+    height: 12rem;
+    width: 9rem;
+    cursor: pointer;
+    }
+
+    .flip-card{
+    width: 90%;
+    height: 70%;
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d; 
+    }
+
+    .flip-card div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.7rem;
+    box-shadow: 1rem 2rem 3rem;
+    backface-visibility: hidden;
+    font-weight: bold;
+    font-size: 0.8rem;
+    }
+
+    .test2 h1 {
+    color: #fff;
+    display: inline;
+    padding: 1%;
+    font-size: 1,5em;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    left: 9%;
+    transform: translate(-50%, -50%);
+}
+
+}
+
+@media (max-width: 500px){
+    
+    .choix{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 40vh;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        perspective: 1000px;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        height: 15vh;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        perspective: 1000px;
+    }
+
+    .flip-card-container{
+    height: 12rem;
+    width: 9rem;
+    cursor: pointer;
+    width: calc(30% - 5px); /* One card per row on smaller screens */
+    }
+
+    .flip-card{
+    width: 90%;
+    height: 70%;
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d; 
+    }
+
+    .flip-card div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.7rem;
+    box-shadow: 1rem 2rem 3rem;
+    backface-visibility: hidden;
+    font-weight: bold;
+    font-size: 0.8rem;
+    }
+}
+
+
+.card-front{
+  background: linear-gradient(45deg, #2193b0, #6dd5ed);
+  text-align: center;
+}
+
+.card-back{
+  background: linear-gradient(45deg, #56ab2f, #a8e063);
+  transform: rotateY(180deg);    
+  text-align: center;
+ }
+
+
+    </style>
+    <title>L'alcool de fou</title>
+
+<head>
+<link rel="shortcut icon" type="image/png" href="https://image.noelshack.com/fichiers/2024/21/2/1716245847-logo-site.png"/>
+</head>
+
+<body>
+    <div class="test2">
+        <h1><img src="https://image.noelshack.com/fichiers/2024/21/2/1716245475-design-sans-titre-2-removebg-preview.png"></img></h1> 
+        
+    </div>
+
+    <div id='dice1' class="dice dice-one">
+        <div id="dice-one-side-one" class='side one'>
+          <div class="dot one-1"></div>
+        </div>
+        <div id="dice-one-side-two" class='side two'>
+          <div class="dot two-1"></div>
+          <div class="dot two-2"></div>
+        </div>
+        <div id="dice-one-side-three" class='side three'>
+          <div class="dot three-1"></div>
+          <div class="dot three-2"></div>
+          <div class="dot three-3"></div>
+        </div>
+        <div id="dice-one-side-four" class='side four'>
+          <div class="dot four-1"></div>
+          <div class="dot four-2"></div>
+          <div class="dot four-3"></div>
+          <div class="dot four-4"></div>
+        </div>
+        <div id="dice-one-side-five" class='side five'>
+          <div class="dot five-1"></div>
+          <div class="dot five-2"></div>
+          <div class="dot five-3"></div>
+          <div class="dot five-4"></div>
+          <div class="dot five-5"></div>
+        </div>
+        <div id="dice-one-side-six" class='side six'>
+          <div class="dot six-1"></div>
+          <div class="dot six-2"></div>
+          <div class="dot six-3"></div>
+          <div class="dot six-4"></div>
+          <div class="dot six-5"></div>
+          <div class="dot six-6"></div>
+        </div>
+      </div>
+
+    <div class='choix'></div>
+    <div class='container'></div>
+    <div class="space"></div>
+</body>
+<script>
+    function CreateCard(query_div,front,back,color,i){
+        const container = document.querySelector(query_div);
+
+        // Create a container for cards.
+        const flipCardContainer = document.createElement('div');
+        flipCardContainer.className = 'flip-card-container';
+        container.appendChild(flipCardContainer);
+        
+        // We are creating nested div so we can use preserve-3d.
+        const flipCard = document.createElement('div');
+        flipCard.className = 'flip-card';
+        flipCardContainer.appendChild(flipCard);
+        
+        
+        const cardFront = document.createElement('div');
+        const cardBack = document.createElement('div');
+        cardFront.className = 'card-front';
+        cardFront.style.background = color;
+        cardBack.className = 'card-back';
+        cardBack.style.background = 'white'
+        flipCard.appendChild(cardFront);
+        flipCard.appendChild(cardBack);
+        
+        const frontTextContent = document.createTextNode(front);
+        const backTextContent = document.createTextNode(back);
+        
+        cardFront.appendChild((frontTextContent));
+        cardBack.appendChild(backTextContent);
+        
+        //flipCardContainer.addEventListener('click', flipListener(i));
+        flipCardContainer.addEventListener('click', flipClick(i));
+
+        //flipCardContainer.addEventListener('click', flipOutListener(i));
+
+        function flipClick(n){
+            return function flipIn(){
+                dice = document.querySelector('#dice1')
+                if (flipCard.style.transform == 'rotateY(180deg) translateZ(100px)'){
+                    flipCard.style.transform = 'rotateY(0deg) translateZ(100px)';
+                    dice.style.visibility = 'visible';
+                }
+                    
+                else {flipCard.style.transform = 'rotateY(180deg) translateZ(100px)';
+                dice.style.visibility = 'hidden';
+                }
+
+                
+                if(n == 3 && flipCard.style.transform == 'rotateY(180deg) translateZ(100px)'){
+                    const scenar = categories[n+1].cards[Math.floor(Math.random() * categories[n+1].cards.length)]
+                    backTextContent.textContent = scenar.scenario;
+               
+                    CreateCard('.choix',scenar.choices[0].text,scenar.choices[0].outcomes[Math.floor(Math.random() *2)],'rgba(0,0,0,0.6)',7)
+                    CreateCard('.choix',scenar.choices[1].text,scenar.choices[1].outcomes[Math.floor(Math.random() *2)],'#F5F5F5',7)
+                }
+
+                if(n == 3 && flipCard.style.transform == 'rotateY(0deg) translateZ(100px)'){
+                    document.querySelector('.choix').innerHTML = '';
+                }
+
+                if(n != 7 && n != 3 && flipCard.style.transform == 'rotateY(180deg) translateZ(100px)'){
+                    backTextContent.textContent = categories[n+1].cards[Math.floor(Math.random() * categories[n+1].cards.length)];
+                }
+                if(n == 7 && flipCard.style.transform == 'rotateY(0deg) translateZ(100px)')
+                {
+                    fl = document.querySelector('body > div.container > div:nth-child(4) > div')
+                    fl.style.transform = 'rotateY(0deg) translateZ(100px)'
+                    document.querySelector('.choix').innerHTML = '';
+
+                }
+
+                
+                //flipCardContainer.addEventListener('click', flipOutListener(i));
+            }
+        }
+    }
+
+
+    var categories = {
+    1: {"name": "1. Loose", "cards": ["Il ne se passe rien"]},
+    2: {"name": "2. Classique", "cards": [
+        "Vérité générale: chaque joueur donne une vérité sur lui, le moins intéressant boit",
+        "Gueule de bois: ne boit pas les 5 prochaines gorgées",
+        "Tournée générale: tout le monde boit une gorgée",
+        "La petite soeur: le joueur boit un bouchon d’alcool",
+        "Le sniper: le joueur boit un shot",
+        "Tony Parker: lance une capsule dans un verre, boit ou fait boire",
+        "Distribution: distribue deux gorgées à une personne",
+        "Distribution: distribue trois gorgées à une personne",
+        "Distribution: distribue deux gorgées à deux personnes",
+        "Sabotage: le joueur boit deux gorgées",
+        "Sabotage: le joueur boit une gorgée",
+        "Sabotage: le joueur boit trois gorgées",
+        "Le temps figé: Personne ne peut jouer de carte pendant le prochain tour",
+        "Double monstre: distribue 2 gorgées à 2 joueurs",
+        "Tiple monstre: distribue 3 gorgées à 2 joueurs",
+        "Monstre : distribue 1 gorgée à 2 joueurs",
+        ]},
+    3: {"name": "3. Rôle", "cards": [
+        "Les lovers: le joueur choisit un autre joueur, si l’un boit, les deux boivent",
+        "La malédiction: le joueur touche quelqu’un qui boira ses gorgées en x2",
+        "Jumeaux cachés: le joueur choisit un jumeau qui doit boire discrètement chaque fois que le joueur boit",
+        "Aristocrate: le joueur ne doit plus utiliser de vocabulaire familier pendant 2 tours",
+        "Vérité générale: le moins intéressant boit",
+        "La victime: doit éviter les regards des autres joueurs pendant 2 tours",
+        "Traversée du désert: divise par deux ses gorgées pendant deux tours",
+        "Happy hour: gorgées x2 pendant 2 tours",
+        "Portail temporel: échange de place avec un autre joueur pour deux tours",
+        "Le banc des punitions: sur le banc pour un tour, boit à chaque carte terrain tirée",
+        "Le Prouveur: ne peut pas boire moins quand les autres quand il boit",
+        "Princesse: Désigne ton chevalier il boit pour toi pour deux tours",
+        "Preux chevalier : Désigne ta princesse, tu bois pour elle pour deux tours",
+        "Fan n°1: Choisis ton idole, tu bois dès qu'elle boit",
+        "Symbole de paix: boit la même quantité de gorgée que tu donnes.",
+        ]},
+    4: {"name": "4. Événements", "cards": [
+        {"scenario": "Vous vous baladez dans la forêt et vous croisez un mendiant",
+         "choices": [
+             {"text": "Vous l'aidez", "outcomes": [
+                 `Il vous remercie et vous offre ${(Math.floor(Math.random() * 5)+1)} gorgées`,
+                 `Merci pour cette bonne action, vous pouvez offrir ${(Math.floor(Math.random() * 5)+1)} gorgées`
+             ]},
+             {"text": "Je ne fais rien", "outcomes": [
+                 "Le mendiant se transforme en sorcière et vous ordonne de boire la moitié de votre verre",
+                 "Le mendiant se transforme en sorcière et vous ordonne de boire trois gorgées"
+             ]}
+         ]},
+        {"scenario": "Vous trouvez une carte au trésor",
+         "choices": [
+             {"text": "Je la suis", "outcomes": [
+                 "Vous trouvez un trésor qui vous permet de sauter les deux prochaines gorgées",
+                 "Il s'agissait d'une carte au trésor piégée, trois gorgées vous attendent"
+             ]},
+             {"text": "Je l'ignore", "outcomes": [
+                 `Tu es tombé dans un piège sur ta route, tu bois ${(Math.floor(Math.random() * 5)+1)} gorgées`,
+                 "Tu as bien fait de fuir, tu as évité la carte au trésor piégée, tu peux sauter les deux prochaines gorgées"
+             ]}
+         ]}
+
+    ]},
+    5: {"name": "5. Duel", "cards": [
+        "SHI FU MI",
+        "Lancé de dé",
+        "Jeu du doigt",
+        "Duel de danse",
+        "Tour du monde: le dernier qui fait un tour sur lui-même perd",
+        "Duel photo: le joueur qui trouve la photo la plus honteuse gagne, l’autre boit 2 gorgées",
+        "Chou fleur de main",
+        "Duel de regard",
+        "Duel d’imitation",
+        "Dés maudits: Deux joueurs lance un dé, le perdant boit deux fois la différence.",
+        ]},
+    6: {"name": "6. Thibzz", "cards": [
+        "Le moise: le joueur divise son verre en deux, ses voisins boivent à sa place",
+        "Le boulanger: ramène le petit déjeuner demain",
+        "Alzheimer: boit x2, distribue x2",
+        "Métissage: shot de deux alcools différents",
+        "Ange et démon: sauve un joueur ou fait boire un cul sec à quelqu’un",
+        "L’armure: immunisé contre les gorgées données",
+        "Tournée du patron: tous les joueurs finissent leurs verres",
+        "La bombe: finis ton verre",
+        "Amitié: partage des gorgées, divisé en deux à la fin du tour",
+        "Traître: fais croire à la carte Amitié mais l’ami choisi doit boire seul",
+        "La traversée de l'enfer: double ses gorgées jusqu’à la fin du jeu",
+        "Le pédo: double les gorgées pour un joueur plus jeune",
+        "Le dragueur: fait boire tous les joueurs du sexe opposé",
+        "Bonne soirée: les culs secs n’annulent plus",
+        "Le garde du corps: boit à la place d’un joueur choisi pendant un tour",
+        "Roi de la fête: distribue une gorgée à trois joueurs différents chaque tour pendant trois tours",
+        "Le nomade: réorganise l'ordre des joueurs",
+        "Un glorieux sacrifice: boit un cul-sec pour infliger un cul sec à deux personnes",
+        "Alcoolisme: boit une gorgée dès qu'un joueur joue pendant deux tours",
+        ]}
+}
+
+    var color = [`#03AED2`,'#DC6B19','#F7C566','#FFF8DC','#D8AE7E','#BED7DC']
+
+    for(var i = 0; i<6; i=i+1){
+        CreateCard('.container',categories[i+1].name, 'I am Back!',color[i],i)
+}
+
+
+
+var elDiceOne       = document.getElementById('dice1');
+
+elDiceOne.onclick   = function () {rollDice();};
+
+function rollDice() {
+
+  var diceOne   = Math.floor((Math.random() * 6) + 1);
+ 
+  console.log(diceOne);
+
+  for (var i = 1; i <= 6; i++) {
+    elDiceOne.classList.remove('show-' + i);
+    if (diceOne === i) {
+      elDiceOne.classList.add('show-' + i);
+    }
+  }
+  //setTimeout(rollDice(), 150);
+}
+
+    </script>
+</html>
