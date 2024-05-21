@@ -481,31 +481,105 @@
         "Fan n°1: Choisis ton idole, tu bois dès qu'elle boit",
         "Symbole de paix: boit la même quantité de gorgée que tu donnes.",
         ]},
-    4: {"name": "4. Événements", "cards": [
-        {"scenario": "Vous vous baladez dans la forêt et vous croisez un mendiant",
-         "choices": [
-             {"text": "Vous l'aidez", "outcomes": [
-                 `Il vous remercie et vous offre ${(Math.floor(Math.random() * 5)+1)} gorgées`,
-                 `Merci pour cette bonne action, vous pouvez offrir ${(Math.floor(Math.random() * 5)+1)} gorgées`
-             ]},
-             {"text": "Je ne fais rien", "outcomes": [
-                 "Le mendiant se transforme en sorcière et vous ordonne de boire la moitié de votre verre",
-                 "Le mendiant se transforme en sorcière et vous ordonne de boire trois gorgées"
-             ]}
+        4: {"name": "4. Événements", "cards": [
+    {"scenario": "Vous vous baladez dans la forêt et vous croisez un mendiant",
+     "choices": [
+         {"text": "Vous l'aidez", "outcomes": [
+             `Il vous remercie et vous offre ${(Math.floor(Math.random() * 5)+1)} gorgées`,
+             `Merci pour cette bonne action, vous pouvez offrir ${(Math.floor(Math.random() * 5)+1)} gorgées`
          ]},
-        {"scenario": "Vous trouvez une carte au trésor",
-         "choices": [
-             {"text": "Je la suis", "outcomes": [
-                 "Vous trouvez un trésor qui vous permet de sauter les deux prochaines gorgées",
-                 "Il s'agissait d'une carte au trésor piégée, trois gorgées vous attendent"
-             ]},
-             {"text": "Je l'ignore", "outcomes": [
-                 `Tu es tombé dans un piège sur ta route, tu bois ${(Math.floor(Math.random() * 5)+1)} gorgées`,
-                 "Tu as bien fait de fuir, tu as évité la carte au trésor piégée, tu peux sauter les deux prochaines gorgées"
-             ]}
+         {"text": "Je ne fais rien", "outcomes": [
+             "Le mendiant se transforme en sorcière et vous ordonne de boire la moitié de votre verre",
+             "Le mendiant se transforme en sorcière et vous ordonne de boire trois gorgées"
          ]}
+     ]
+    },
+    {"scenario": "Vous trouvez une carte au trésor",
+     "choices": [
+         {"text": "Je la suis", "outcomes": [
+             "Vous trouvez un trésor qui vous permet de sauter les deux prochaines gorgées",
+             "Il s'agissait d'une carte au trésor piégée, trois gorgées vous attendent"
+         ]},
+         {"text": "Je l'ignore", "outcomes": [
+             `Tu es tombé dans un piège sur ta route, tu bois ${(Math.floor(Math.random() * 5)+1)} gorgées`,
+             "Tu as bien fait de fuir, tu as évité la carte au trésor piégée, tu peux sauter les deux prochaines gorgées"
+         ]}
+     ]
+    },
+    {"scenario": "Vous tombez sur une fête de village",
+     "choices": [
+         {"text": "Vous participez", "outcomes": [
+             "L'ambiance est géniale, vous pouvez offrir 3 gorgées à d'autres joueurs.",
+             "Vous buvez un verre avec les villageois, prenez 2 gorgées."
+         ]},
+         {"text": "Vous continuez votre chemin", "outcomes": [
+             "Vous ratez une belle fête, buvez 2 gorgées.",
+             "Vous évitez une situation potentiellement dangereuse, sautez votre prochain tour de boisson."
+         ]}
+     ]
+    },
+    {"scenario": "Vous trouvez une bouteille mystérieuse",
+     "choices": [
+         {"text": "Vous la buvez", "outcomes": [
+             "La potion vous donne de l'énergie, distribuez 4 gorgées.",
+             "La potion est trop forte, vous devez boire 4 gorgées."
+         ]},
+         {"text": "Vous la laissez", "outcomes": [
+             "Vous évitez un risque potentiel, donnez 2 gorgées.",
+             "Vous manquez une potion revigorante, buvez 2 gorgées."
+         ]}
+     ]
+    },
+    {"scenario": "Un sorcier vous propose un marché",
+     "choices": [
+         {"text": "Vous acceptez", "outcomes": [
+             "Le marché est bénéfique, vous pouvez sauter le prochain tour.",
+             "Le marché est un piège, buvez 5 gorgées."
+         ]},
+         {"text": "Vous refusez", "outcomes": [
+             "Le sorcier se venge, vous devez boire 3 gorgées.",
+             "Le sorcier respecte votre choix, rien ne se passe."
+         ]}
+     ]
+    },
+    {"scenario": "Vous trouvez un coffre au trésor",
+     "choices": [
+         {"text": "Vous l'ouvrez", "outcomes": [
+             "Le coffre contient des richesses, distribuez 3 gorgées.",
+             "Le coffre est piégé, buvez 3 gorgées."
+         ]},
+         {"text": "Vous l'ignorez", "outcomes": [
+             "Vous évitez un piège potentiel, sautez votre prochain tour.",
+             "Vous ratez une opportunité, buvez 2 gorgées."
+         ]}
+     ]
+    },
+    {"scenario": "Vous rencontrez un vieil ami",
+     "choices": [
+         {"text": "Vous passez du temps avec lui", "outcomes": [
+             "Vous passez un bon moment, distribuez 2 gorgées.",
+             "La soirée devient folle, buvez 3 gorgées."
+         ]},
+         {"text": "Vous continuez votre chemin", "outcomes": [
+             "Vous manquez des souvenirs, buvez 2 gorgées.",
+             "Vous restez concentré sur votre objectif, sautez votre prochain tour."
+         ]}
+     ]
+    },
+    {"scenario": "Vous trouvez un raccourci dangereux",
+     "choices": [
+         {"text": "Vous le prenez", "outcomes": [
+             "Vous arrivez plus vite mais épuisé, buvez 4 gorgées.",
+             "Vous évitez des ennuis, distribuez 3 gorgées."
+         ]},
+         {"text": "Vous prenez le chemin sûr", "outcomes": [
+             "Vous arrivez sain et sauf, sautez votre prochain tour.",
+             "Le chemin est plus long et ennuyeux, buvez 2 gorgées."
+         ]}
+     ]
+    }
+]},
 
-    ]},
     5: {"name": "5. Duel", "cards": [
         "SHI FU MI",
         "Lancé de dé",
